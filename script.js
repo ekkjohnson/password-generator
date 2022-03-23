@@ -97,6 +97,10 @@ if (userchoice){
   userselection.digits=true
   console.log(userselection.digits)
 }
+if (userselection.lower===false&&userselection.upper===false&&userselection.spec===false&&userselection.digits===false){
+  alert("Please select at least one character type")
+  generatePassword()
+}
 return;
 }
 generateBtn.addEventListener("click", writePassword);
