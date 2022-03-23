@@ -47,7 +47,7 @@ generateBtn.addEventListener("click", writePassword);
 
 //8. transfomring the 
 
-Array.join("")
+
 
 var generateBtwn = document.querySelector("#generate")
 
@@ -72,8 +72,12 @@ function writePassword(){
 
 function generatePassword(){
   return;
-  var charLength="Character length can't exceed 128 characters"
-  prompt
+  var charLength=prompt("Please select 8-128 characters")
+  if (charLength <8 || charLength>128){
+    alert("Range incorrect, please select 8-128 characters")
+    generatePassword()
+  }
+  else 
 }
 
 generateBtn.addEventListener("click", writePassword)
