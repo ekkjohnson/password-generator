@@ -54,13 +54,13 @@ var generateBtwn = document.querySelector("#generate")
 var lowCase = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
 var upperCase = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
 var specChar =["!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "+", "-", ".", "`", "~", "|", "<", ">", "=", "-", "_"]
-var digits = ["1", "2", "3", "4", "5","6","7","8","9"]
+var digits = ["0", "1", "2", "3", "4", "5","6","7","8","9"]
 
 var userselection= {
-  lower: true,
-  upper: true,
-  spec: true,
-  digits: true,
+  lower: false,
+  upper: false,
+  spec: false,
+  digits: false,
 }
 
 function writePassword(){
@@ -71,13 +71,32 @@ function writePassword(){
 }
 
 function generatePassword(){
-  return;
+  
   var charLength=prompt("Please select 8-128 characters")
   if (charLength <8 || charLength>128){
     alert("Range incorrect, please select 8-128 characters")
     generatePassword()
   }
-  else 
+var userchoice=confirm("Lowercase?")
+if (userchoice){
+  userselection.lower=true
+  console.log(userselection.lower)
 }
-
-generateBtn.addEventListener("click", writePassword)
+  var userchoice=confirm("Uppercase?")
+if (userchoice){
+  userselection.upper=true
+  console.log(userselection.upper)
+}
+var userchoice=confirm("Special Character?")
+if (userchoice){
+  userselection.spec=true
+  console.log(userselection.spec)
+}
+var userchoice=confirm("Digit?")
+if (userchoice){
+  userselection.digits=true
+  console.log(userselection.digits)
+}
+return;
+}
+generateBtn.addEventListener("click", writePassword);
