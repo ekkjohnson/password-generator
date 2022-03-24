@@ -58,12 +58,13 @@ var digits = ["0", "1", "2", "3", "4", "5","6","7","8","9"]
 
 const charType=["lowCase", "upperCase", "specChar","digits"];
 
-//var userselection= {
- // lower: false,
- // upper: false,
-  //spec: false,
-  //digits: false,
-//}
+var userselection= {
+ lower: false,
+ upper: false,
+  spec: false,
+  digits: false,
+}
+var userInput =[]
 
 function writePassword(){
   var password=generatePassword();
@@ -72,40 +73,48 @@ function writePassword(){
   passwordText.value = password;
 }
 
-function generatePassword(){
+function generatePassword(){{
   
   var charLength=prompt("Please select 8-128 characters")
   if (charLength <8 || charLength>128){
     alert("Range incorrect, please select 8-128 characters")
     return null;
   }
+  
 var userchoice=confirm("Lowercase?")
 if (userchoice){
   userselection.lower=true
   console.log(userselection.lower)
+  //userchoice.concat(userInput)
 }
-  var userchoice=confirm("Uppercase?")
+var userchoice=confirm("Uppercase?")
 if (userchoice){
   userselection.upper=true
   console.log(userselection.upper)
+  //userchoice.concat(userInput)
 }
 var userchoice=confirm("Special Character?")
 if (userchoice){
   userselection.spec=true
   console.log(userselection.spec)
+  //userchoice.concat(userInput)
 }
 var userchoice=confirm("Digit?")
 if (userchoice){
   userselection.digits=true
   console.log(userselection.digits)
+ // userchoice.concat(userInput)
+}
+userchoice.concat(userInput)
 }
 if (userselection.lower===false&&userselection.upper===false&&userselection.spec===false&&userselection.digits===false){
   alert("Please select at least one character type")
   
+  var Pass =[]
 
 for (let i=0; i< charLength; i++)
-  var selecType= charType[Math.floor(Math.random()*4)]
-  password = password.concat(selecType[Math.floor(Math.random()*selecType.length)])
+  var selecType= charType[Math.floor(Math.random()*selecType.length)]
+  password = password.concat(selecType)
   generatePassword()
 }
 
@@ -113,7 +122,7 @@ var pw= Pass.join("")
 
 console.log (pw)
 return pw
-
-return password;
 }
+
+
 generateBtn.addEventListener("click", writePassword);
