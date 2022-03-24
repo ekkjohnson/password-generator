@@ -101,6 +101,12 @@ if (userselection.lower===false&&userselection.upper===false&&userselection.spec
   alert("Please select at least one character type")
   generatePassword()
 }
+else{
+  for (let i=0; i< charLength; i++)
+  var selecType= charType[Math.floor(Math.random()*4)]
+  Password = Password.concat(selecType[Math.floor(Math.random()*selecType.length)])
+}
 return;
 }
 generateBtn.addEventListener("click", writePassword);
+
