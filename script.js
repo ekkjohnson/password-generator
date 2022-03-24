@@ -56,12 +56,14 @@ var upperCase = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M"
 var specChar =["!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "+", "-", ".", "`", "~", "|", "<", ">", "=", "-", "_"]
 var digits = ["0", "1", "2", "3", "4", "5","6","7","8","9"]
 
-var userselection= {
-  lower: false,
-  upper: false,
-  spec: false,
-  digits: false,
-}
+const charType=["lowCase", "upperCase", "specChar","digits"];
+
+//var userselection= {
+ // lower: false,
+ // upper: false,
+  //spec: false,
+  //digits: false,
+//}
 
 function writePassword(){
   var password=generatePassword();
@@ -75,7 +77,7 @@ function generatePassword(){
   var charLength=prompt("Please select 8-128 characters")
   if (charLength <8 || charLength>128){
     alert("Range incorrect, please select 8-128 characters")
-    generatePassword()
+    return null;
   }
 var userchoice=confirm("Lowercase?")
 if (userchoice){
@@ -99,14 +101,19 @@ if (userchoice){
 }
 if (userselection.lower===false&&userselection.upper===false&&userselection.spec===false&&userselection.digits===false){
   alert("Please select at least one character type")
+  
+
+for (let i=0; i< charLength; i++)
+  var selecType= charType[Math.floor(Math.random()*4)]
+  password = password.concat(selecType[Math.floor(Math.random()*selecType.length)])
   generatePassword()
 }
-else{
-  for (let i=0; i< charLength; i++)
-  var selecType= charType[Math.floor(Math.random()*4)]
-  Password = Password.concat(selecType[Math.floor(Math.random()*selecType.length)])
-}
-return;
+
+var pw= Pass.join("")
+
+console.log (pw)
+return pw
+
+return password;
 }
 generateBtn.addEventListener("click", writePassword);
-
