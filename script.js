@@ -2,25 +2,25 @@
 var generateBtn = document.querySelector("#generate");
 
 
-function generatePassword(){
-return "password";
-}
+//function generatePassword(){
+//return "password";
+//}
 
 function indexRandomizer(){
 
 }
 
 // Write password to the #password input
-function writePassword() {
-  var password = generatePassword();
-  var passwordText = document.querySelector("#password");
+// function writePassword() {
+//   var password = generatePassword();
+//   var passwordText = document.querySelector("#password");
 
-  passwordText.value = password;
+//   passwordText.value = password;
 
-}
+// }
 
 // Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
+// generateBtn.addEventListener("click", writePassword);
 
 
 
@@ -64,14 +64,9 @@ var userselection= {
   spec: false,
   digits: false,
 }
-var userInput =[]
 
-function writePassword(){
-  var password=generatePassword();
-  var passwordText = document.querySelector("#password");
-  
-  passwordText.value = password;
-}
+
+
 
 function generatePassword(){{
   
@@ -105,23 +100,36 @@ if (userchoice){
   console.log(userselection.digits)
  // userchoice.concat(userInput)
 }
-userchoice.concat(userInput)
+userInput= upperCase.concat(lowCase, specChar, digits)
 }
 if (userselection.lower===false&&userselection.upper===false&&userselection.spec===false&&userselection.digits===false){
   alert("Please select at least one character type")
   
-  var Pass =[]
 
-for (let i=0; i< charLength; i++)
-  var selecType= charType[Math.floor(Math.random()*selecType.length)]
-  password = password.concat(selecType)
-  generatePassword()
+  var userInput =[]
+
+for (let i=0; i< charLength; i++){
+  var selecType= userselection[Math.floor(Math.random()*charLength.length)]
+  userInput.push(selecType)
+console.log(selecType)
 }
 
-var pw= Pass.join("")
+  var pw= userInput.join("")
+  console.log (pw)
 
-console.log (pw)
+}
 return pw
+
+// var pw= Pass.join("")
+
+}
+
+
+function writePassword(){
+  var password=generatePassword();
+  var passwordText = document.querySelector("#password");
+  
+  passwordText.value = password;
 }
 
 
