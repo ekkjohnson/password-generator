@@ -11,13 +11,13 @@ function indexRandomizer(){
 }
 
 // Write password to the #password input
-// function writePassword() {
-//   var password = generatePassword();
-//   var passwordText = document.querySelector("#password");
+function writePassword() {
+  var password = generatePassword();
+  var passwordText = document.querySelector("#password");
 
-//   passwordText.value = password;
+  passwordText.value = password;
 
-// }
+}
 
 // Add event listener to generate button
 // generateBtn.addEventListener("click", writePassword);
@@ -49,88 +49,101 @@ function indexRandomizer(){
 
 
 
-var generateBtwn = document.querySelector("#generate")
+var generateBtn = document.querySelector("#generate")
 
 var lowCase = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
 var upperCase = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
 var specChar =["!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "+", "-", ".", "`", "~", "|", "<", ">", "=", "-", "_"]
 var digits = ["0", "1", "2", "3", "4", "5","6","7","8","9"]
 
+var container=[]
+
 const charType=["lowCase", "upperCase", "specChar","digits"];
 
-var userselection= {
- lower: false,
- upper: false,
-  spec: false,
-  digits: false,
+var userSelection= {
+ lower: undefined,
+ upper: undefined,
+  spec: undefined,
+  digits: undefined,
 }
+generateBtn.addEventListener("click", writePassword);
+  function generatePassword() {
+    //prompting user engagement to select characters
+    var charInput= prompt("Please select between 8 and 128 characters.")
+      if (charInput < 8 || charInput > 128) {
+        alert("Selection was incorrect. Please select between 8 and 128 characters.")
+          generatePassword()
+      }
+     
+      //going through boolean values
+    var userChoice= confirm("Would you like lowercase characters?")
+      if (userChoice) {
+        userSelection.lower= true
+        container.push(lowCase)
+      } else {
+        userSelection.lower=false
+      }
+    var userChoice= confirm("Would you like uppercase characters?")
+      if (userChoice) {
+        userSelection.upper= true
+        container.push(upperCase)
+      }  else {
+        userSelection.upper=false
+      }
+    var userChoice= confirm("Would you like numeric characters?")
+      if (userChoice) {
+        userSelection.digits= true
+        container.push(digits)
+      } else {
+        userSelection.digits=false
+      }
+    var userChoice= confirm("Would you like special characters?")
+      if (userChoice) {
+        userSelection.spec= true
+        container.push(specChar)
+      } else {
+        userSelection.spec=false
+      }
+ 
 
-
-
-
-function generatePassword(){{
-  
-  var charLength=prompt("Please select 8-128 characters")
-  if (charLength <8 || charLength>128){
-    alert("Range incorrect, please select 8-128 characters")
-    return null;
-  }
-  
-var userchoice=confirm("Lowercase?")
-if (userchoice){
-  userselection.lower=true
-  console.log(userselection.lower)
-  //userchoice.concat(userInput)
-}
-var userchoice=confirm("Uppercase?")
-if (userchoice){
-  userselection.upper=true
-  console.log(userselection.upper)
-  //userchoice.concat(userInput)
-}
-var userchoice=confirm("Special Character?")
-if (userchoice){
-  userselection.spec=true
-  console.log(userselection.spec)
-  //userchoice.concat(userInput)
-}
-var userchoice=confirm("Digit?")
-if (userchoice){
-  userselection.digits=true
-  console.log(userselection.digits)
- // userchoice.concat(userInput)
-}
-userInput= upperCase.concat(lowCase, specChar, digits)
-}
-if (userselection.lower===false&&userselection.upper===false&&userselection.spec===false&&userselection.digits===false){
+if (userSelection.lower===false&&userSelection.upper===false&&userSelection.spec===false&&userSelection.digits===false){
   alert("Please select at least one character type")
-  
-
-  var userInput =[]
-
-for (let i=0; i< charLength; i++){
-  var selecType= userselection[Math.floor(Math.random()*charLength.length)]
-  userInput.push(selecType)
-console.log(selecType)
+  console.log(container)
 }
 
-  var pw= userInput.join("")
+numberGenerator(charInput)
+var generatePassword= newPassword
+newPassword=""
+return generatePassword
+  }
+function numberGenerator (x){
+for (let i=0; i< x; i++){
+  var selecType= container[Math.floor(Math.random()*container.length)]
+  newPassword = newPassword.concat(selecType[Math.floor(Math.random() * selecType.length) ])
+}
+return newPassword
+}
+  // container.push(selecType)
+console.log(container)
+
+
+  var pw= container.join("")
   console.log (pw)
 
-}
-return pw
+
+// return pw
 
 // var pw= Pass.join("")
 
-}
 
 
-function writePassword(){
-  var password=generatePassword();
-  var passwordText = document.querySelector("#password");
+
+// function writePassword(){
+//   var password=generatePassword();
+//   var passwordText = document.querySelector("#password");
   
-  passwordText.value = password;
-}
+//   passwordText.value = password;
+// }
 
 
-generateBtn.addEventListener("click", writePassword);
+
