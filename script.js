@@ -62,10 +62,10 @@ var newPassword= "";
 const charType=["lowCase", "upperCase", "specChar","digits"];
 
 var userSelection= {
- lower: undefined,
- upper: undefined,
-  spec: undefined,
-  digits: undefined,
+ lower: false,
+ upper: false,
+  spec: false,
+  digits: false,
 }
 generateBtn.addEventListener("click", writePassword);
   function generatePassword() {
@@ -81,29 +81,37 @@ generateBtn.addEventListener("click", writePassword);
       if (userChoice) {
         userSelection.lower= true
         container.push(lowCase)
+        console.log(userSelection)
       } else {
         userSelection.lower=false
+        console.log(userSelection)
       }
     var userChoice= confirm("Would you like uppercase characters?")
       if (userChoice) {
         userSelection.upper= true
         container.push(upperCase)
+        console.log(userSelection)
       }  else {
         userSelection.upper=false
+        console.log(userSelection)
       }
     var userChoice= confirm("Would you like numeric characters?")
       if (userChoice) {
         userSelection.digits= true
         container.push(digits)
+        console.log(userSelection)
       } else {
         userSelection.digits=false
+        console.log(userSelection)
       }
     var userChoice= confirm("Would you like special characters?")
       if (userChoice) {
         userSelection.spec= true
         container.push(specChar)
+        console.log(userSelection)
       } else {
         userSelection.spec=false
+        console.log(userSelection)
       }
  
 
@@ -128,8 +136,8 @@ return newPassword
 console.log(container)
 
 
-  var pw= container.join("")
-  console.log (pw)
+  // var pw= container.join("")
+  // console.log (pw)
 
 
 // return pw
